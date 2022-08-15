@@ -1,0 +1,7 @@
+<div class="nav">
+    <div class="nav-item" *ngFor="let nav of navbar">
+        <div [ngClass]="{'nav-item-active': nav === this.activePage}" (click)="goToPage($event)">
+            {{ nav }}
+        </div>    
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<!-- Navigation Part -->
+<app-navigation [activePage]="pageName"></app-navigation>
+
+<!-- Relationship Income -->
+<div *ngIf="dataLoaded">
+    <div class="gray-bg">
+        <!-- Headers Part -->
+        <div class="header">
+            <div  class="header-div" *ngFor="let head of headers">
+                <div class="header-text">{{ head.header }}</div>
+                <div class="header-value">{{ head.value }}</div>
+            </div>
+        </div>
+    
+        <!-- Relationship Part -->
+        <div class="body-bg">
+            <app-entity-filter [relationship]="data.relationship" [selectedChild]="selectedChild" (click)="entityChange($event)"></app-entity-filter>
+
+            <!-- Table Part -->
+            <table class="table" cellspacing="0">
+                <!-- Table Header -->
+                <thead class="table-headers">
+                    <tr>
+                        <th class="table-rows-checkbox"><input type="checkbox"></th>
+                        <th *ngFor="let head of tableHeaders"
+                        [ngClass]="{'table-values': head !== 'Category', ' table-values-percent': head !== 'Revenue' && head !== 'Category'}">
+                            {{head}}
+                        </th>
+                    </tr>
+                </thead>
+                
+                <!-- Table -->
+                <tbody class="table-body">
+                    <tr class="table-rows" *ngFor="let tblhead of data.summary.incomeTypes[0].groups">
+                        <td class="table-rows-checkbox"><input type="checkbox"></td>
+                        <td>{{ tblhead.groupLabel }} </td>
+                        <ng-container *ngFor="let period of tblhead.periods">
+                            <td class="table-values">{{ period.results.revenue | number:'1.0-0' }}</td>
+                            <td class="table-values table-values-right">{{ period.results.roe | number:'1.2-2'}}%</td>
+                        </ng-container>
+                    </tr>
+                    <tr class="table-rows table-rows-total">
+                        <td></td>
+                        <td>Total</td>
+                        <ng-container *ngFor="let total of data.summary.relationshipTotal">
+                            <td class="table-values">${{ total.results.revenue | number:'1.0-0' }}</td>
+                            <td class="table-values table-values-right">{{ total.results.roe | number:'1.2-2'}}%</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

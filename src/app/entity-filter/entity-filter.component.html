@@ -1,0 +1,8 @@
+<div class="entity">
+    <div class="entity-primary">
+        {{ this.relationship.name }}
+    </div>
+    <div class="entity-secondary" *ngFor="let child of relationship.children" [ngClass]="{'entity-secondary-selected': child.name === this.selectedChild}">
+        {{ child.name }}
+    </div>
+</div>

@@ -1,0 +1,6 @@
+[
+    { "header":"Total revenue", "value": "$400,000"},
+    { "header":"Credit", "value":  "$200,000"},
+    { "header":"Deposits", "value":  "$120,000"},
+    { "header":"Services", "value":  "$80,000"}
+]

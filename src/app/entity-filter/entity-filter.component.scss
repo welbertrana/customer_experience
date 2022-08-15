@@ -1,0 +1,24 @@
+.entity {
+    display: flex;
+    padding: 10px 5px;
+    &-primary {
+        border-radius: 8px;
+        background-color: darkblue;
+        color: white;
+        padding: 8px 10px;
+        text-align: center;
+        font-size: 14px;
+        margin: 0px 10px;
+    }
+    &-secondary {
+        border-radius: 8px;
+        color: gray;
+        padding: 8px 10px;
+        text-align: center;
+        font-size: 14px;
+        margin: 0px 10px;
+        &-selected {
+            border: 1px solid gray;
+        }
+    }
+}
